@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> NFT</title>
+
+
+
+
+
+    <!--CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+    <!--Icon and font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+    <!--Background-->
+    <style>
+        body {
+            --s: 3vmin;
+            --p: calc(var(--s) / 2);
+            --c1: rgb(1, 1, 1);
+            --c2: rgb(5, 5, 5);
+            --c3: rgb(3, 3, 3);
+            --bg: var(--c3);
+            --d: 4000ms;
+            --e: cubic-bezier(0.76, 0, 0.24, 1);
+
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(45deg, var(--c1) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--c1) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--c2) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--c2) 75%);
+            background-size: var(--s) var(--s);
+            background-position:
+                calc(var(--p) * 1) calc(var(--p) * 0),
+                calc(var(--p) * -1) calc(var(--p) * 1),
+                calc(var(--p) * 1) calc(var(--p) * -1),
+                calc(var(--p) * -1) calc(var(--p) * 0);
+            animation:
+                color var(--d) var(--e) infinite,
+                position var(--d) var(--e) infinite;
+        }
+
+        @keyframes color {
+
+            0%,
+            25% {
+                --bg: var(--c3);
+            }
+
+            26%,
+            50% {
+                --bg: var(--c1);
+            }
+
+            51%,
+            75% {
+                --bg: var(--c3);
+            }
+
+            76%,
+            100% {
+                --bg: var(--c2);
+            }
+        }
+
+        @keyframes position {
+            0% {
+                background-position:
+                    calc(var(--p) * 1) calc(var(--p) * 0),
+                    calc(var(--p) * -1) calc(var(--p) * 1),
+                    calc(var(--p) * 1) calc(var(--p) * -1),
+                    calc(var(--p) * -1) calc(var(--p) * 0);
+            }
+
+            25% {
+                background-position:
+                    calc(var(--p) * 1) calc(var(--p) * 4),
+                    calc(var(--p) * -1) calc(var(--p) * 5),
+                    calc(var(--p) * 1) calc(var(--p) * 3),
+                    calc(var(--p) * -1) calc(var(--p) * 4);
+            }
+
+            50% {
+                background-position:
+                    calc(var(--p) * 3) calc(var(--p) * 8),
+                    calc(var(--p) * -3) calc(var(--p) * 9),
+                    calc(var(--p) * 2) calc(var(--p) * 7),
+                    calc(var(--p) * -2) calc(var(--p) * 8);
+            }
+
+            75% {
+                background-position:
+                    calc(var(--p) * 3) calc(var(--p) * 12),
+                    calc(var(--p) * -3) calc(var(--p) * 13),
+                    calc(var(--p) * 2) calc(var(--p) * 11),
+                    calc(var(--p) * -2) calc(var(--p) * 12);
+            }
+
+            100% {
+                background-position:
+                    calc(var(--p) * 5) calc(var(--p) * 16),
+                    calc(var(--p) * -5) calc(var(--p) * 17),
+                    calc(var(--p) * 5) calc(var(--p) * 15),
+                    calc(var(--p) * -5) calc(var(--p) * 16);
+            }
+        }
+
+        @media (prefers-reduced-motion) {
+            body {
+                animation: none;
+            }
+        }
+    </style>
+    <!--Button-->
+    <style>
+        .button {
+            border-radius: 15px;
+            background-color: rgb(84, 126, 0);
+            border: none;
+            color: rgb(192, 247, 64);
+            text-align: center;
+            padding: 15px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+
+        }
+
+        .button:hover {
+            background-color: rgb(192, 247, 64);
+            color: rgb(84, 126, 0);
+
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+            /* background-color: rgb(84, 126, 0); */
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+    <!--submit button-->
+    <style>
+        .button1 {
+            padding: 3px 8px;
+            background: rgb(192, 247, 64);
+            border: 0;
+            color: rgb(84, 126, 0);
+            text-transform: uppercase;
+            font-family: helvetica;
+            font-size: 12px;
+            letter-spacing: 3px;
+            position: relative;
+            transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+            display: block;
+        }
+
+        .button1::after,
+        .button1::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .button1::after {
+            width: 30px;
+            height: 1px;
+            background: rgb(84, 126, 0);
+            transform: translateX(-3px);
+            margin-top: 0px;
+        }
+
+        .button1::before {
+            content: "";
+            transform: rotate(-135deg) translateX(50%);
+            width: 11px;
+            height: 11px;
+            background: transparent;
+            border-left: 1px solid rgb(84, 126, 0);
+            border-bottom: 1px solid rgb(84, 126, 0);
+            margin-top: -1px;
+        }
+
+
+        .button1:hover {
+            padding: 15px 60px 15px 20px;
+        }
+
+        .button1:hover::after,
+        .button1:hover::before {
+            opacity: 1;
+            right: 15px;
+        }
+    </style>
+
+
+    <!--Vetical line-->
+    <style>
+        .vl {
+            border-left: 5px dashed rgb(192, 247, 64);
+            height: 100%;
+            padding: 20px;
+        }
+    </style>
+
+
+
+</head>
+
+<body class="wrapper">
+
+
+    <div class="row justify-content-around align-content-center">
+        <!--Logo top-->
+        <img src="Gamora-1 copy-1.png" alt="" style="margin-top: 5%; width: 100%;">
+    </div>
+
+
+    <div class="row justify-content-around align-content-center" style="margin-right:9%;margin-left:9%;">
+        <!--Top display video-->
+        <video class="align-content-center col-lg-10 col-md-10 col-sm-10"
+            style="border-radius: 15px; padding:15px; background-color: rgba(255,255, 255, 0.1)"
+            src="https://ik.imagekit.io/bayc/assets/club-landing.mp4" alt="" autoplay muted loop></video>
+    </div>
+
+    <div class="row justify-content-around align-content-center"
+        style="margin-top: 15px;margin-right:9%;margin-left:9%;">
+
+        <div class="col-lg-4 col-md-3 col-sm-10"
+            style="border-radius: 15px;margin-right: 20px; margin-top: 10px; padding:15px; background-color: rgba(255,255, 255, 0.1)">
+            <p style=" font-size: 25px; font-weight: 1000; color: rgb(192, 247, 64);">WELCOME TO THE
+                GAMORA CRYPTO CLUB</p>
+            <a href="Second.html" class=" button btn btn-primary"><span style="font-weight:700;">ENTER
+                </span></a>
+        </div>
+
+        <div class="col-lg-4 col-md-3 col-sm-10"
+            style="border-radius: 15px;margin-right: 20px;  margin-top: 10px; padding:15px; background-color: rgba(255,255, 255, 0.1)">
+            <p
+                style="text-align: left;align-content: left; font-size: 15px; font-weight: 1000; color: rgb(192, 247, 64);">
+                A limited NFT collection where the token itself doubles as your membership to a swamp
+                club for apes.
+                The club is open! Ape in with us.</p>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-10"
+            style="border-radius: 15px;margin-right: 20px; margin-top: 10px; padding:15px; background-color: rgba(255,255, 255, 0.1)">
+            <p
+                style="text-align: left;align-content: left; font-size: 15px; font-weight: 1000; color: rgb(192, 247, 64);">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis unde laboriosam eveniet
+                quo veniam
+                omnis</p>
+        </div>
+    </div>
+    
+
+    <style>
+        .square {
+            background: orange;
+            border-radius: 8px;
+            box-shadow: 3px 5px 5px black;
+        }
+
+        .square-animation {
+            animation: wipe-enter 1.25s ease 1;
+        }
+
+        .square-wrapper {
+            border: 0px;
+        }
+
+
+        @keyframes wipe-enter {
+            0% {
+                transform: scale(-0.075, -0.25);
+                box-shadow: 1px 1px 1px white;
+            }
+
+            50% {
+                transform: scale(-0.5, 0.5);
+                box-shadow: 3px 3px 3px gray;
+            }
+            80%{
+                transform: scale(0.85 , 1);
+                box-shadow: 3px 3px 3px rgba(255,255, 255, 0.1);
+            }
+            100%{
+                box-shadow: 1px 1px 1px black;
+            }
+
+        }
+        
+    </style>
+
+
+
+    <div class="row justify-content-center align-content-center square-wrapper"
+        style="margin-left: 10%;margin-right: 10%;margin-top: 15px; border-radius: 15px; background-color:rgba(255,255, 255, 0.1); padding: 25px;">
+
+        <p style="font-size: 40px; font-weight:1000;color:yellowgreen; font-style: italic; margin-bottom: 10px;">THE
+            CREATORS</p>
+        <br>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+            <img src="GamoraCrypto.gif" class="square square-animation col-2" style="border-radius: 10%; width: 100%;">
+
+            <!-- <video src="#" autoplay muted loop></video> -->
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <p class style="font-size: 15px; font-weight:500;color:white;"><br>Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Architecto enim incidunt animi? Laborum, ipsam perferendis aliquid perspiciatis aut
+                corporis nihil id eveniet eos, totam et! Ab totam eaque quos odio.
+            </p>
+
+        </div>
+
+    </div>
+
+    <script>const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const square = entry.target.querySelector('.square');
+      
+          if (entry.isIntersecting) {
+            square.classList.add('square-animation');
+            return; // if we added the class, exit the function
+          }
+      
+          // We're not intersecting, so remove the class!
+          square.classList.remove('square-animation');
+        });
+      });
+      
+      observer.observe(document.querySelector('.square-wrapper'));</script>
+
+
+
+    <div class="row justify-content-around" style="padding-top: 70px;padding-bottom: 25px;">
+        <div style="width: 35%;float: left;">
+            <hr>
+        </div>
+        <img style="width: 20%;" src="Gamora-1 copy-1.png" alt="">
+        <div style="width: 35%;float: right;">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row justify-content-around justify-content-lg-center"
+        style="border-radius: 15px;margin: 3%;padding: 2%;background-color:rgba(255,255, 255, 0.1)">
+        <form action="nft.php" method="post" class="col-lg-5 col-md-5 col-sm-12">
+            <p style=" font-size: 30px; font-weight: 1000; color: rgb(192, 247, 64);">Get on the list</p>
+            <input type="email" name="email" id="email" class="button1"
+                style=" background-color: rgb(192, 247, 64);color: black; border: 1px dashed black; border-radius: 10px; font-size: 20px; font-weight: 700;max-width:450px;width:100%">
+            <input type="submit" class="button1"
+                style=" background-color: rgb(192, 247, 64);color: black;border: 1px dashed black; border-radius: 10px;">
+        </form>
+
+        <div class="container col-lg-5 col-md-5 col-sm-12" style="margin-top: 3%">
+            <div class="row justify-content-around">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <button style=" background-color: rgb(192, 247, 64);color: black;"><a href="http://"><i
+                                style="color: black;" class="fa fa-youtube"></i></a></button>
+                    <button style=" background-color: rgb(192, 247, 64);color: black;"><a href="http://"><i
+                                style="color: black;" class="fa fa-instagram"></i></a></button>
+                    <button style=" background-color: rgb(192, 247, 64);color: black;"><a href="http://"><i
+                                style="color: black;" class="fa fa-discord"></i></a></button>
+                    <button style=" background-color: rgb(192, 247, 64);color: black;"><a href="http://"><i
+                                style="color: black;" class="fa fa-twitch"></i></a></button>
+                </div>
+
+                <div class="col-lg-8 col-md-8 col-sm-8" style="float: right;"><br>
+                    <p style="color: white;"><i class="fa fa-copyright"></i>BAYC LLC<br>
+                        <a href="" style="text-decoration: none; color:rgb(192, 247, 64)">Terms&Conditions</a><br>
+                        <a href="" style="text-decoration: none; color:rgb(192, 247, 64)">More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

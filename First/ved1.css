@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(43, 43, 43);
+    font-family: "Poppins",sans-serif;
+}
+
+li, a, button{
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+    font-size: 16;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10px;
+    background-color: rgb(26, 26, 26) ;
+}
+
+.cont{
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+    font-size: 16;
+    color: antiquewhite;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.logo {
+    height: 50px;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.nav__links {
+    list-style: none;
+    background-color: rgb(26, 26, 26) ;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+    background-color: rgb(26, 26, 26) ;
+
+}
+
+.nav__links li:nth-child(1) {
+    padding: 0 20px 0 0;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+    background-color: rgb(26, 26, 26) ;
+
+}
+
+.nav__links li a :hover {
+    color: #0088a9;
+}
+
+.cont{
+    order: 2;
+}
+
+.Profile{
+    height: 35px;
+    justify-content: center;
+}
+
+.drop{
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: #0088a9;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+
+.sidebar{
+    position:fixed;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: rgb(26, 26, 26) ;
+    transition: all 0.5s ease;
+}
+
+.sidebar header{
+    height: 45px;
+    font-size: 25px;
+    color: #0088a9;
+    text-align: center;
+    justify-content: center;
+    line-height: 70px;
+    background-color: rgb(26, 26, 26) ;
+}
+
+.sidebar ul a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: aliceblue;
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(26, 26, 26);
+    border-bottom: 1px solid rgb(26, 26, 26);
+    transition: .4s;
+}
+
+ul li:hover a{
+    padding-left: 50px;
+}
+
+.sidebar ul a i{
+    margin-right: 16px;
+}
+
+#check{
+    display: none;
+    transition: all 0.5s;
+
+}
+
+label #open{
+    position: absolute;
+    cursor: pointer;
+    background-color: grey;
+    width: 35px;
+    border: 2px;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+
+#check:checked ~ .sidebar{
+    left: 0;
+}
+
+#check:checked ~ label #open{
+    left: 250px;
+}
+
+.main{
+    transition: all 0.5s;
+    background-color: rgb(43, 43, 43);
+    height: 100vh;
+    display: grid;
+    place-items: center center;
+}
+#check:checked ~ .main{
+    margin-left: 250px;
+}
+
+
+.carda{
+    justify-items: center;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    grid-gap: 40px;
+    width: 90%;
+    background-color: rgb(26, 26, 26);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.18);
+    background-image: linear-gradient(to right, rgb(247, 46, 79) , purple);
+}
+.cardA *{
+    font-family: "Poppins",sans-serif;
+    background-image: linear-gradient(to right, rgb(247, 46, 79) , purple);
+    border-radius: 15px;
+}
+.cards{
+    padding: 20px;
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 50%);
+    grid-gap: 15px;
+}
+.card{
+    background-color: rgb(26, 26, 26);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.18);
+}
+.card *{
+    font-family: "Poppins",sans-serif;
+    background-color: rgb(26, 26, 26);
+    padding: 7px;
+    border-radius: 15px;
+}
+
+.card-body{
+    background-color: rgb(26, 26, 26);
+}
+
+.icon{
+    width: 100px;
+    padding: auto;
+    border-radius: 20px 20px 0 0 ;
+    
+}
+.card h5{
+    color: grey;
+}
+.card h1,h3{
+    color: white;
+}
+
+.card1, .card2, .card4{
+    color: green;
+}
+
+.card3{
+    color: red;
+}
+
+
+.set2 {
+    display: grid;
+    grid-template-columns: 1fr minmax(25%, 75%);
+    grid-gap: 20px;
+    width: 90%;
+    height: 100%;
+    justify-items: center;
+    text-align: center;
+}
+.ver-card {
+    background-color: rgb(26, 26, 26);
+    justify-items: center;
+    text-align: center;
+    padding: 15px 15px 15px 15px;
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.ver-card *{
+    background-color: rgb(26, 26, 26);
+}
+.div-data {
+    padding: 15px;
+    background-color: rgb(43,43,43);
+    border-radius: 15px;
+}
+.div-data *{
+    background-color: rgb(43,43,43);
+}
+
+.ver-card h3,h4{
+    color: aliceblue;
+}
+.ver-card h5{
+    color: grey;
+}
+
+.table{
+    background-color: rgb(26, 26, 26);
+    justify-items: center;
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+}
+.table td{
+    padding: 2px;
+}
+.table *{
+    background-color: rgb(26, 26, 26);
+}
+
+.table h1,h2{
+    color: aliceblue;
+}
+
+.table h4,h5,br{
+    color: grey;
+}
+
+.cards3{
+    padding: 20px;
+    width: 95%;
+    height: 100%;
+    display: grid;
+    grid-template-columns:minmax(30%, 1fr) minmax(30%, 1fr) minmax(30%, 1fr);
+    grid-gap: 15px;
+}
+
+.table2{
+    width: 90%;
+    height: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    background-color: rgb(26, 26, 26);
+    border-collapse:collapse ;
+    text-align: left;
+    overflow:scroll;
+}
+
+.table2 tbody{
+    grid-template-columns:minmax(30%, 100%);
+    height: 100%;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border-collapse:collapse ;
+    text-align: left;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.table2 *{
+    background-color: rgb(26, 26, 26);
+    font-family: "Poppins",sans-serif;
+
+}
+.table2 th{
+    padding: 1rem 2rem;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    font-size:0.9rem;
+    font-weight: 900;
+    text-align: left;
+}
+
+.table2 td{
+    padding: 1rem 2rem;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    font-size:0.9rem;
+    font-weight: 900;
+    text-align: left;
+
+}
+
+.status{
+    color: rgb(26, 26, 26);
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+.status-Approved{
+    background-color: green;
+}
+.status-Pending{
+    background-color: yellow;
+}
+.status-Rejected{
+    background-color: red;
+}
+tr:nth-child(even){
+    background-color: rgb(43, 43, 43);
+}
+   
+
+.maptable{
+    padding: 20px;
+    border-radius: 15px;
+    justify-content: center;
+    color: aliceblue;
+    border-collapse:collapse;
+    text-align: left;
+    overflow:scroll;
+}
+
+
+.maptable td{
+    padding: 0.1rem 0.2rem;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    font-size:0.9rem;
+    font-weight: 900;
+    text-align: left;
+}
+
+svg{
+    float: right;
+    height: 100%;
+    width:  100%;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(26, 26, 26);
+}
+.MAP{
+    width: 90%;
+    display: grid;
+    grid-template-columns:minmax(50%, 10%) minmax(50%, 1fr);
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    background-color: rgb(26, 26, 26);
+    justify-items: center;
+    zoom:unset;
+}
+
+.MAP *{
+    background-color: rgb(26, 26, 26);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+
+svg path{
+    width: 60%;
+    fill: white;
+    stroke: #eee;
+    stroke-width:0.25 ;
+}
+
+
+svg path:hover{
+    fill: gray;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.United_States,.United_States_Virgin_Islands,.American_Samoa , .United_Kingdom{
+    fill: gray;
+}
+
+#BR,#RO,#DE{
+    fill: gray;
+
+}
+
+.United_States{
+    fill: blue;
+}
+.United_States_Virgin_Islands{
+    fill: blue;
+}
+.American_Samoa{
+    fill: blue;
+}
+.United_Kingdom{
+    fill:red;
+}
+
+#BR{
+    fill: green;
+}
+#RO{
+    fill: palevioletred;
+}
+#DE{
+    fill: gray ;
+}

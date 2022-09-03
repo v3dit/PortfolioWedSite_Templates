@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Da club</title>
+
+    <!--CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+    <!--Icon and font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+    <!--Background-->
+    <style>
+        body {
+            --s: 3vmin;
+            --p: calc(var(--s) / 2);
+            --c1: rgb(1, 1, 1);
+            --c2: rgb(5, 5, 5);
+            --c3: rgb(3, 3, 3);
+            --bg: var(--c3);
+            --d: 4000ms;
+            --e: cubic-bezier(0.76, 0, 0.24, 1);
+
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(45deg, var(--c1) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--c1) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--c2) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--c2) 75%);
+            background-size: var(--s) var(--s);
+            background-position:
+                calc(var(--p) * 1) calc(var(--p) * 0),
+                calc(var(--p) * -1) calc(var(--p) * 1),
+                calc(var(--p) * 1) calc(var(--p) * -1),
+                calc(var(--p) * -1) calc(var(--p) * 0);
+            animation:
+                color var(--d) var(--e) infinite,
+                position var(--d) var(--e) infinite;
+        }
+
+        @keyframes color {
+
+            0%,
+            25% {
+                --bg: var(--c3);
+            }
+
+            26%,
+            50% {
+                --bg: var(--c1);
+            }
+
+            51%,
+            75% {
+                --bg: var(--c3);
+            }
+
+            76%,
+            100% {
+                --bg: var(--c2);
+            }
+        }
+
+        @keyframes position {
+            0% {
+                background-position:
+                    calc(var(--p) * 1) calc(var(--p) * 0),
+                    calc(var(--p) * -1) calc(var(--p) * 1),
+                    calc(var(--p) * 1) calc(var(--p) * -1),
+                    calc(var(--p) * -1) calc(var(--p) * 0);
+            }
+
+            25% {
+                background-position:
+                    calc(var(--p) * 1) calc(var(--p) * 4),
+                    calc(var(--p) * -1) calc(var(--p) * 5),
+                    calc(var(--p) * 1) calc(var(--p) * 3),
+                    calc(var(--p) * -1) calc(var(--p) * 4);
+            }
+
+            50% {
+                background-position:
+                    calc(var(--p) * 3) calc(var(--p) * 8),
+                    calc(var(--p) * -3) calc(var(--p) * 9),
+                    calc(var(--p) * 2) calc(var(--p) * 7),
+                    calc(var(--p) * -2) calc(var(--p) * 8);
+            }
+
+            75% {
+                background-position:
+                    calc(var(--p) * 3) calc(var(--p) * 12),
+                    calc(var(--p) * -3) calc(var(--p) * 13),
+                    calc(var(--p) * 2) calc(var(--p) * 11),
+                    calc(var(--p) * -2) calc(var(--p) * 12);
+            }
+
+            100% {
+                background-position:
+                    calc(var(--p) * 5) calc(var(--p) * 16),
+                    calc(var(--p) * -5) calc(var(--p) * 17),
+                    calc(var(--p) * 5) calc(var(--p) * 15),
+                    calc(var(--p) * -5) calc(var(--p) * 16);
+            }
+        }
+
+        @media (prefers-reduced-motion) {
+            body {
+                animation: none;
+            }
+        }
+    </style>
+    <!--Button-->
+    <style>
+        .button {
+            border-radius: 15px;
+            background-color: rgb(84, 126, 0);
+            border: none;
+            color: rgb(192, 247, 64);
+            text-align: center;
+            padding: 15px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+
+        }
+
+        .button:hover {
+            background-color: rgb(192, 247, 64);
+            color: rgb(84, 126, 0);
+
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+            /* background-color: rgb(84, 126, 0); */
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+    <!--submit button-->
+    <style>
+        .button1 {
+            padding: 3px 8px;
+            background: rgb(192, 247, 64);
+            border: 0;
+            color: rgb(84, 126, 0);
+            text-transform: uppercase;
+            font-family: helvetica;
+            font-size: 12px;
+            letter-spacing: 3px;
+            position: relative;
+            transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: pointer;
+            display: block;
+        }
+
+        .button1::after,
+        .button1::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .button1::after {
+            width: 30px;
+            height: 1px;
+            background: rgb(84, 126, 0);
+            transform: translateX(-3px);
+            margin-top: 0px;
+        }
+
+        .button1::before {
+            content: "";
+            transform: rotate(-135deg) translateX(50%);
+            width: 11px;
+            height: 11px;
+            background: transparent;
+            border-left: 1px solid rgb(84, 126, 0);
+            border-bottom: 1px solid rgb(84, 126, 0);
+            margin-top: -1px;
+        }
+
+
+        .button1:hover {
+            padding: 15px 60px 15px 20px;
+        }
+
+        .button1:hover::after,
+        .button1:hover::before {
+            opacity: 1;
+            right: 15px;
+        }
+    </style>
+
+
+    <!--Vetical line-->
+    <style>
+        .vl {
+            border-left: 5px dashed rgb(192, 247, 64);
+            height: 100%;
+            padding: 20px;
+        }
+    </style>
+
+
+
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-black fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Main.html">
+                <!--logo--><img width="120px" src="Gamora-1 copy-1.png" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                style="color: rgb(84, 126, 0); background-color: rgb(192, 247, 64);">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav nav-menu-list me-auto mb-2 mb-lg-0 align-items-end" style="padding-top: 15px;">
+                    <li class="nav-item">
+                        <!--home link--><a class="nav-link active" aria-current="page" href="Main.html"
+                            style="color:rgb(192, 247, 64);padding:5px;font-size: 15px;font-weight:600">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <!--Roadmap link--> <a href="#roadmap" class="nav-link"
+                            style="color:rgb(192, 247, 64);padding:5px;font-size: 15px;font-weight:600">Roadmap</a>
+                    </li>
+                    <li class="nav-item">
+                        <!--Team link--> <a href="#team" class="nav-link"
+                            style="color:rgb(192, 247, 64);padding:5px;font-size: 15px;font-weight:600">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <!--Gallery link--> <a href="https://boredapeyachtclub.com/#/gallery" class="nav-link"
+                            style="color:rgb(192, 247, 64);padding:5px;font-size: 15px;font-weight:600">Gallery</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <!--Member dropdown--><a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color:rgb(192, 247, 64);padding:5px;font-size: 15px;font-weight:600">
+                            Members
+                        </a>
+                        <ul class="dropdown-menu align-items-end bg-black">
+                            <li><a class="dropdown-item" href="#"
+                                    style="color:rgb(84, 126, 0);padding:5px;font-size: 15px;font-weight:600">MAYC</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"
+                                    style="color:rgb(84, 126, 0);padding:5px;font-size: 15px;font-weight:600">V
+                                    CLUB</a></li>
+                            <li><a class="dropdown-item" href="#"
+                                    style="color:rgb(84, 126, 0);padding:5px;font-size: 15px;font-weight:600">MERCH</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br><br>
+
+    <div class="container-fluid">
+        <div class="row align-content-center" style="margin-left: 9%;margin-right: 9%;">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <img src="https://ik.imagekit.io/bayc/assets/bayc-mutant-hero.jpg" class="card-img-top" alt="..."
+                    style="border-radius: 15px; padding:15px; background-color: rgba(255,255, 255, 0.1)">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="conttainer-fluid">
+            <div class="row justify-content-center" style="margin-left: 10%;margin-right: 15%;">
+                <div class="col-lg-4 col-md-4 col-sm-12"
+                    style="border-radius: 15px; padding:15px; margin-bottom: 10px; border: 1px dashed white; background-color: rgba(255,255, 255, 0.1)">
+                    <p
+                        style="font-size: 30px; font-weight:1000;color:yellowgreen; font-style: italic; margin-bottom: 10px;">
+                        WELCOME TO THE BORED APE YACHT CLUB</p>
+                    <p style="color: white;">BAYC is a collection of 10,000 Bored Ape NFTs—unique digital collectibles
+                        living on the
+                        Ethereum
+                        blockchain. Your Bored Ape doubles as your Yacht Club membership card, and grants access to
+                        members-only benefits, the first of which is access to THE BATHROOM, a collaborative graffiti
+                        board. Future areas and perks can be unlocked by the community through roadmap activation.</p>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 justify-content-around">
+                    <div style="display:inline-flex;">
+                        <img src="https://ik.imagekit.io/bayc/assets/ape1.png" class="card-img-top col" alt="..."
+                            style="margin:5px;border-radius: 15px;width: 40%;min-width:150px;background-color: rgba(255,255, 255, 0.1)">
+                        <img src="https://ik.imagekit.io/bayc/assets/ape2.png" class="card-img-top col" alt="..."
+                            style="margin:5px;border-radius: 15px;width: 40%;min-width:150px;background-color: rgba(255,255, 255, 0.1)">
+                    </div>
+                    <div style="display:inline-flex;">
+                        <img src="https://ik.imagekit.io/bayc/assets/ape3.png" class="card-img-top col" alt="..."
+                            style="margin:5px;border-radius: 15px;width: 40%;min-width:150px;background-color: rgba(255,255, 255, 0.1)">
+                        <img src="https://ik.imagekit.io/bayc/assets/ape4.png" class="card-img-top col" alt="..."
+                            style="margin:5px;border-radius: 15px;width: 40%;min-width:150px;background-color: rgba(255,255, 255, 0.1)">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row justify-content-center" style="padding: 5px;">
+            <div class="col-lg-5 col-md-5 col-sm-12  justify-content-start"
+                style="padding:15px;border-radius: 15px; background-color: rgba(255,255, 255, 0.1); border: 1px dashed white;">
+                <p style="color: greenyellow; font-size:25px">DISTRIBUTION</p>
+                <P style="color: greenyellow; font-size:16px">(BONDING CURVES ARE A PONZI)</P>
+                <p style="color: white;">There are no bonding curves here. Buying a Bored Ape costs 0.08 ETH. There
+                    are no price tiers;
+                    BAYC membership costs the same for everyone.</p>
+            </div>
+            <div style="width: 45px;"></div>
+            <div class="col-lg-4 col-md-4 col-sm-12  justify-content-end"
+                style="padding:15px;border-radius: 15px;  background-color: rgba(255,255, 255, 0.1); border: 1px dashed white;  font-size: large;">
+                <p style="color: white;">
+                    <span style="color: greenyellow;">Note:</span> Thirty apes are being withheld from the sale.
+                    These will be used for giveaways, puzzle rewards—and for the creators' BAYC memberships.
+                </p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row justify-content-around align-content-center"
+            style="margin-left: 10%;margin-right: 10%;border-radius: 15px; background-color:yellowgreen; padding:20px;">
+
+            <div class="col-lg-6 col-md-6 col-sm-6"
+                style="padding: 15px; color: black; text-align: center; font-size: 21px; font-weight: 600;">
+                <p style="color: black; text-align: center; font-size: 25px; font-weight: 800;font-style: italic;">
+                    BUY
+                    SOME</p>The initial sale has sold out. To get your Bored Ape, check out the collection on
+                OpenSea.
+            </div>
+            <button class="col-lg-3 col-md-12 col-sm-12 button"
+                style="border-radius: 15px; float:right; max-width: 400px; padding: 10px; background-color: black; color: greenyellow; text-align: center; font-size: 21px; font-weight: 700;">
+                <a href="https://opensea.io/collection/boredapeyachtclub"
+                    style="text-decoration: none; color: yellowgreen;"><span>AN APE ON OpenSea</span></a>
+            </button>
+        </div>
+
+        <br>
+        <hr style="width: 80%; margin-left: 10%;border:1px solid rgb(84, 126, 0);">
+        <br>
+
+        <div class="row justify-content-center align-content-center"
+            style="margin-left: 10%;margin-right: 10%; border-radius: 15px; background-color:rgba(255,255, 255, 0.1); padding: 25px;">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <p style="font-size: 25px; font-weight:900; color:yellowgreen">THE SPECS</p>
+                <p style="color: white;"> Bored Ape is unique and programmatically generated from over 170 possible
+                    traits, including
+                    expression, headwear, clothing, and more. All apes are dope, but some are rarer than others.
+                </p>
+                <p style="color: white;"> The apes are stored as ERC-721 tokens on the Ethereum blockchain and hosted on
+                    IPFS. <a href="https://boredapeyachtclub.com/#/provenance"
+                        style="text-decoration: none underline;color:rgb(192, 247, 64)">(See Record and
+                        Proof.)</a> Purchasing an ape costs 0.08 ETH.
+                </p>
+                <p style="color: white;"> access members-only areas such as THE BATHROOM, Apeholders will need to be
+                    signed into their
+                    Metamask Wallet.
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <img src="GamoraCrypto.gif" style="border-radius: 10%; width: 80%;">
+
+                <!-- <video src="#" autoplay muted loop></video> -->
+            </div>
+        </div>
+
+        <br>
+        <hr style="width: 80%; margin-left: 10%;border:1px solid rgb(84, 126, 0);">
+        <br>
+
+
+        <div
+            style="margin-left: 10%;margin-right: 10%; border-radius: 15px; background-color:rgba(255,255, 255, 0.1); padding: 25px;">
+
+            <p style="font-size: 40px; font-weight:1000;color:yellowgreen; font-style: italic; margin-bottom: 10px;">
+                WELCOME TO THE CLUB</p>
+            <p style="font-size: 15px; font-weight:500;color:white;">When you buy a Bored Ape, you’re not simply buying
+                an avatar or a provably-rare piece of art. You are
+                gaining membership access to a club whose benefits and offerings will increase over time. Your Bored Ape
+                can serve as your digital identity, and open digital doors for you.
+            </p>
+            <br>
+            <div class="row justify-content-center align-content-center">
+                <div class="col-2">
+                    <img src="https://ik.imagekit.io/bayc/assets/icon1.png" alt="" width="90px">
+                </div>
+                <div class="col-2">
+                    <img src="https://ik.imagekit.io/bayc/assets/icon2.png" alt="" width="90px">
+                </div>
+                <div class="col-2">
+                    <img src="https://ik.imagekit.io/bayc/assets/icon3.png" alt="" width="90px">
+                </div>
+                <div class="col-2">
+                    <img src="https://ik.imagekit.io/bayc/assets/icon4.png" alt="" width="90px">
+
+                </div>
+                <div class="col-2">
+                    <img src="https://ik.imagekit.io/bayc/assets/icon5.png" alt="" width="90px">
+                </div>
+            </div>
+            <div class="row justify-content-center align-content-center">
+                <div class="col-2">
+                    <p style="color:white; font-weight: 500;">10,000 Provably-rare Bored Ape tokens</p>
+                </div>
+                <div class="col-2">
+                    <p style="color:white; font-weight: 500;">Fair Launch, fair distribution: All apes cost 0.08 ETH</p>
+                </div>
+                <div class="col-2">
+                    <p style="color:white; font-weight: 500;">Ownership and commercial usage rights given to the
+                        consumer over their NFT</p>
+                </div>
+                <div class="col-2">
+                    <p style="color:white; font-weight: 500;">The Bathroom: A member's-only graffiti board</p>
+                </div>
+                <div class="col-2">
+                    <p style="color:white; font-weight: 500;">Gain additional benefits through roadmap activations</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+    <hr style="width: 80%; margin-left: 10%;border:1px solid rgb(84, 126, 0);">
+    <br>
+
+    <div class="row justify-content-center align-content-center"
+        style="margin-left: 10%;margin-right: 10%; border-radius: 15px; background-color:rgba(255,255, 255, 0.1); padding: 25px;">
+
+        <p style="font-size: 40px; font-weight:1000;color:yellowgreen; font-style: italic; margin-bottom: 10px;">THE
+            BATHROOM</p>
+        <p style="font-size: 15px; font-weight:500;color:white;">The BAYC Bathroom will become operational once the
+            presale period is over. It contains a canvas accessible only to wallets containing at least one ape. Like
+            any good dive bar bathroom, this is the place to draw, scrawl, or write expletives.
+
+        </p>
+        <p style="font-size: 15px; font-weight:500;color:white;">
+            Each ape-holder will be able to paint a pixel on the bathroom wall every fifteen minutes. Think of it as a
+            collaborative art experiment for the cryptosphere. A members-only canvas for the discerning minds of crypto
+            twitter.
+        </p>
+        <p style="font-size: 15px; font-weight:500;color:white;">
+            We're pretty sure it's going to be full of dicks.
+        </p>
+        <br><br>
+        <img src="https://ik.imagekit.io/bayc/assets/toilet.png" alt="" style="width: 180px;">
+    </div>
+
+    <br id="roadmap">
+    <hr style="width: 80%; margin-left: 10%;border:1px solid rgb(84, 126, 0);">
+    <br>
+
+    <style>
+        th {
+            color: yellowgreen;
+            width: 10%;
+            text-align: center;
+        }
+
+        td {
+            padding: 2%;
+            color: white;
+            text-decoration: line-through;
+            width: 40%;
+        }
+
+        .tshirt {
+            border-radius: 5%;
+            width: 50%;
+            background-color: yellowgreen;
+            padding: 5%;
+            transition: 0.5s ease;
+        }
+
+        .tshirt:hover {
+            border-radius: 7%;
+            padding: 0%;
+            width: 50%;
+            background-color: rgb(192, 247, 64);
+        }
+    </style>
+    <div class="row justify-content-center align-content-center"
+        style="margin-left: 10%;margin-right: 10%; border-radius: 15px; background-color:rgba(255,255, 255, 0.1); padding: 25px;">
+
+        <p style="font-size: 40px; font-weight:1000;color:yellowgreen; font-style: italic; margin-bottom: 10px;">THE
+            ROADMAP ACTIVATIONS</p>
+        <p style="font-size: 15px; font-weight:500;color:white;">We’re in this for the long haul.
+
+        </p>
+        <p style="font-size: 15px; font-weight:500;color:white;">
+            We’ve set up some goalposts for ourselves. Once we hit a target sell through percentage, we will begin to
+            work on realizing the stated goal.
+        </p>
+
+        <br><br><br><br><br>
+
+        <table class="col-12">
+            <tr>
+                <th>10%</th>
+                <td>We pay back our moms.</td>
+            </tr>
+            <tr>
+                <th>20%</th>
+                <td>We release the Caged Apes. 5 Caged Apes (tokens held back from the sale) are airdropped to random
+                    Apeholders.</td>
+            </tr>
+            <tr>
+                <th>40%</th>
+                <td>BAYC gets its own YouTube channel, BAYC LoFi Radio - Beats to Ape into Shitcoins To.</td>
+            </tr>
+            <tr>
+                <th>60%</th>
+                <td>BAYC gets its own YouTube channel, BAYC LoFi Radio - Beats to Ape into Shitcoins To.</td>
+            </tr>
+            <tr>
+                <th>80%</th>
+                <td>The clubhouse image becomes interactive and the Mysterious Note becomes legible, beginning a
+                    treasure hunt. The first to solve the mystery will be rewarded 5 ETH and a Bored Ape.</td>
+            </tr>
+            <tr>
+                <th>90%</th>
+                <td>The Bored Ape liquidity pool is initiated.</td>
+            </tr>
+            <tr>
+                <th>100%</th>
+                <td>The Mutant Ape (NFT Breeding) Arcade Machine gets ﬁxed. And we cook up new ways to ape with our
+                    friends.</td>
+            </tr>
+        </table>
+
+        <img src="https://ik.imagekit.io/bayc/assets/shirt.png" alt="" class="tshirt">
+    </div>
+
+
+
+    <br>
+    <hr style="width: 80%; margin-left: 10%;border:1px solid rgb(84, 126, 0);">
+    <br>
+
+
+    <div class="row justify-content-around align-content-center"
+        style="margin-left: 10%;margin-right: 10%; border-radius: 15px; background-color:rgba(255,255, 255, 0.1); padding: 25px;">
+        <div class="col-lg-6 col-md-11 col-sm-11">
+            <p style="font-size: 40px; font-weight:1000;color:yellowgreen; font-style: italic; margin-bottom: 10px;">THE
+                COMMUNITY TOOLS</p>
+            <p style="font-size: 15px; font-weight:500;color:white;">Here are some helpful tools created by the Bored
+                Ape Yacht Club community. Please note that these are unofficial in nature. Every assignment of an ape's
+                overall value or rarity is inherently subjective.</p>
+
+        </div>
+
+        <div class="col-lg-6 col-md-11 col-sm-11  row justify-content-around align-content-center">
+            <button class="col-lg-5 col-md-3 col-sm-3 button"
+                style="width: 40%;background-color: yellowgreen; padding:3%; border-radius: 15px; color:black">
+                <a href="https://nftexp.io/explore/bored-ape-yacht-club"
+                    style="text-decoration: none;font-size: 15px; font-weight:700; color:black;"><span>NFTEXP.IO</span></a>
+            </button>
+            <button class="col-lg-5 col-md-3 col-sm-3 button"
+                style="width: 40%;background-color: yellowgreen; padding:3%; border-radius: 15px; color:black">
+                <a href="https://rarity.tools/boredapeyachtclub"
+                    style="text-decoration: none;font-size: 15px; font-weight:700; color:black;"><span>RARITY.TOOLS</span></a>
+
+            </button>
+        </div>
+    </div>
+
+    <br id="team">
+    <hr style="width: 80%; margin-left: 10%;border:1px solid rgb(84, 126, 0);">
+    <br>
+
+    <div class="row justify-content-center align-content-center"
+        style="margin-left: 10%;margin-right: 10%; border-radius: 15px; background-color:rgba(255,255, 255, 0.1); padding: 25px;">
+        <div class="col-lg-5 col-md-6 col-sm-10 justify-content-around">
+
+            <p style="font-size: 40px; font-weight:1000;color:yellowgreen; font-style: italic; margin-bottom: 10px;">THE
+                THE TEAM</p>
+            <p style="font-size: 15px; font-weight:500;color:white;">BAYC was created by four friends who set out to
+                make
+                some dope apes, test our skills, and try to build something (ridiculous).
+            </p>
+            <p style="font-size: 15px; font-weight:500;color:white;"><span style="color: yellowgreen;">GONER.</span>
+                REFORMED LEVERAGE ADDICT.</p>
+            <p style="font-size: 15px; font-weight:500;color:white;">
+                <span style="color: yellowgreen;">GORDON GONER.</span> REFORMED LEVERAGE ADDICT.
+            </p>
+            <p style="font-size: 15px; font-weight:500;color:white;">
+                <span style="color: yellowgreen;">EMPEROR TOMATO KETCHUP.</span> SPENT ALL THEIR MONEY ON FIRST PRESSES
+                AND
+                PET-NAT.
+            </p>
+            <p style="font-size: 15px; font-weight:500;color:white;">
+                <span style="color: yellowgreen;">NO SASS.</span> HERE FOR THE APES. NOT FOR THE SASS.
+            </p>
+            <br><br>
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-sm-10">
+            <div>
+                <img src="https://ik.imagekit.io/bayc/assets/garga.png" class="card-img-top col" alt="..."
+                    style="margin:5px;border-radius: 15px;width: 40%;min-width:140px;background-color: rgba(255,255, 255, 0.1)">
+                <img src="https://ik.imagekit.io/bayc/assets/gordy.png" class="card-img-top col" alt="..."
+                    style="margin:5px;border-radius: 15px;width: 40%;min-width:140px;background-color: rgba(255,255, 255, 0.1)">
+            </div>
+            <div>
+                <img src="https://ik.imagekit.io/bayc/assets/tomato.png" class="card-img-top col" alt="..."
+                    style="margin:5px;border-radius: 15px;width: 40%;min-width:140px;background-color: rgba(255,255, 255, 0.1)">
+                <img src="https://ik.imagekit.io/bayc/assets/sass.png" class="card-img-top col" alt="..."
+                    style="margin:5px;border-radius: 15px;width: 40%;min-width:140px;background-color: rgba(255,255, 255, 0.1)">
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p style="font-size: 100%; font-weight:500;color:white; font-style: italic; text-align: center;">VERIFIED SMART
+        CONTRACT ADDRESS: <a href="https://etherscan.io/address/0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
+            style="font-size: 110%; font-weight:400;color:yellowgreen;text-decoration: underline;">0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D</a>
+    </p>
+
+
+    <div class="row justify-content-around" style="padding-top: 70px;padding-bottom: 25px;">
+        <div style="width: 35%;float: left;">
+            <hr>
+        </div>
+        <img style="width: 20%;" src="Gamora-1 copy-1.png" alt="">
+        <div style="width: 35%;float: right;">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row justify-content-around justify-content-lg-center"
+        style="border-radius: 15px;margin: 3%;padding: 2%;background-color:rgba(255,255, 255, 0.1)">
+        <form action="nft.php" method="post" class="col-lg-5 col-md-5 col-sm-12">
+            <p style=" font-size: 30px; font-weight: 1000; color: rgb(192, 247, 64);">Get on the list</p>
+            <input type="email" name="email" id="email" class="button1"
+                style=" background-color: rgb(192, 247, 64);color: black; border: 1px dashed black; border-radius: 10px; font-size: 20px; font-weight: 700;max-width:450px;width:100%">
+            <input type="submit" class="button1"
+                style=" background-color: rgb(192, 247, 64);color: black;border: 1px dashed black; border-radius: 10px;">
+        </form>
+
+        <div class="container col-lg-5 col-md-5 col-sm-12" style="margin-top: 3%">
+            <div class="row justify-content-around">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <button style=" background-color: rgb(192, 247, 64);color: black;"><a href="http://"><i
+                                style="color: black;" class="fa fa-youtube"></i></a></button>
+                    <button style=" background-color: rgb(192, 247, 64);color: black;"><a href="http://"><i
+                                style="color: black;" class="fa fa-instagram"></i></a></button>
+                    <button style=" background-color: rgb(192, 247, 64);color: black;"><a href="http://"><i
+                                style="color: black;" class="fa fa-discord"></i></a></button>
+                    <button style=" background-color: rgb(192, 247, 64);color: black;"><a href="http://"><i
+                                style="color: black;" class="fa fa-twitch"></i></a></button>
+                </div>
+
+                <div class="col-lg-8 col-md-8 col-sm-8" style="float: right;"><br>
+                    <p style="color: white;"><i class="fa fa-copyright"></i>BAYC LLC<br>
+                        <a href="" style="text-decoration: none; color:rgb(192, 247, 64)">Terms&Conditions</a><br>
+                        <a href="" style="text-decoration: none; color:rgb(192, 247, 64)">More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+
+</body>
+
+</html>
